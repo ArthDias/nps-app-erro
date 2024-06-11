@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 export class AuthService {
   private isAuthenticated = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.isAuthenticated = localStorage.getItem('auth') === 'true';
+   }
 
   register(email: string, password: string) {
     const users = this.getUsers();
@@ -35,8 +37,7 @@ export class AuthService {
   }
 
   getAuthStatus(): boolean {
-    const auth = localStorage.getItem('auth');
-    return auth === 'true';
+    return this.isAuthenticated;
   }
 
   private getUsers(): Array<{ email: string, password: string }> {

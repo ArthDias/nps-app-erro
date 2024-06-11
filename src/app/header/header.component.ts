@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  isLoggedIn: boolean = false;
 
+  ngOnInit(): void {
+    this.isLoggedIn = !!localStorage.getItem('auth');
+  }
+
+  logOut() {
+    localStorage.setItem('logoutNotification', 'Usuário desconectado!');
+    localStorage.removeItem('auth');
+    location.reload();
+  }
 }

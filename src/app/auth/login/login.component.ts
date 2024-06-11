@@ -20,6 +20,7 @@ export class LoginComponent {
       if (!isAuthenticated) {
         this.errorMessage = 'Invalid email or password';
       }
+      this.router.navigate(['/dashboard']);
     }
   }
 }
